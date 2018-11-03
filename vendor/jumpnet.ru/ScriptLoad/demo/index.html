@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Demo ScriptLoader.js</title>
+	<script src="../vendor/jQuery-2.2.4/jquery-2.2.4.min.js"></script>
+	<script src="../dist/js/ScriptLoad.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css"/>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css"/>
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.css">
+
+	<style>
+		body{
+			background-color: #bec5c1;
+		}
+		.gallery{
+			margin: auto;
+			width: 480px;
+		}
+	</style>
+</head>
+<body>
+<div class="gallery gallery1">
+	<a href="https://dummyimage.com/1200x800/ffb25b"><img src="https://dummyimage.com/480x320/ffb25b"></a>
+	<a href="https://dummyimage.com/1200x800/449c73"><img src="https://dummyimage.com/480x320/449c73"></a>
+	<a href="https://dummyimage.com/1200x800/180c29/f0eeee"><img src="https://dummyimage.com/480x320/180c29/f0eeee"></a>
+	<a href="https://dummyimage.com/1200x800/f0eeee/180c29"><img src="https://dummyimage.com/480x320/f0eeee/180c29"></a>
+	<a href="https://dummyimage.com/1200x800/f0cacf"><img src="https://dummyimage.com/480x320/f0cacf"></a>
+</div>
+<div class="gallery gallery2">
+	<a href="https://dummyimage.com/1200x800/d40e37"><img src="https://dummyimage.com/480x320/d40e37"></a>
+	<a href="https://dummyimage.com/1200x800/ff7caa"><img src="https://dummyimage.com/480x320/ff7caa"></a>
+	<a href="https://dummyimage.com/1200x800/ffcfe2"><img src="https://dummyimage.com/480x320/ffcfe2"></a>
+	<a href="https://dummyimage.com/1200x800/ffecf0"><img src="https://dummyimage.com/480x320/ffecf0"></a>
+	<a href="https://dummyimage.com/1200x800/e6ee9f"><img src="https://dummyimage.com/480x320/e6ee9f"></a>
+</div>
+<div class="gallery gallery3">
+	<a href="https://dummyimage.com/1200x800/d40e37"><img src="https://dummyimage.com/120x80/d40e37"></a>
+	<a href="https://dummyimage.com/1200x800/ff7caa"><img src="https://dummyimage.com/120x80/ff7caa"></a>
+	<a href="https://dummyimage.com/1200x800/ffcfe2"><img src="https://dummyimage.com/120x80/ffcfe2"></a>
+	<a href="https://dummyimage.com/1200x800/ffecf0"><img src="https://dummyimage.com/120x80/ffecf0"></a>
+	<a href="https://dummyimage.com/1200x800/e6ee9f"><img src="https://dummyimage.com/120x80/e6ee9f"></a>
+</div>
+<script>
+	window._isDev = false;
+	if(typeof window.$document === "undefined"){
+		window.$document = $(document);
+	}
+	$document.ready(function () {
+		(function () {
+			let $gallery1 = $('.gallery1');
+			let gallery = new SL($gallery1);
+			gallery.modules({
+				'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick': Object.getPrototypeOf($())['slick'],
+				'https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/jquery.magnific-popup': Object.getPrototypeOf($())['magnificPopup'],
+			});
+			gallery.run({
+				callback: function () {
+					$gallery1.slick();
+					$gallery1.magnificPopup({
+						delegate: 'a',
+						type: 'image',
+						gallery: {
+							enabled: true
+						},
+					});
+				},
+			})
+		})();
+		(function () {
+			let $gallery2 = $('.gallery2');
+			let $gallery3 = $('.gallery3');
+			let gallery = new SL($gallery2);
+			gallery.modules({
+				'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick': Object.getPrototypeOf($())['slick'],
+				'https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/jquery.magnific-popup': Object.getPrototypeOf($())['magnificPopup'],
+			});
+			gallery.run({
+				callback: function () {
+					$gallery2.slick({
+						slidesToShow: 1,
+						slidesToScroll: 1,
+						arrows: true,
+						dots: true,
+						fade: true,
+						asNavFor: '.gallery3'
+					});
+					$gallery3.slick({
+						slidesToShow: 3,
+						slidesToScroll: 1,
+						asNavFor: '.gallery2',
+						arrows: false,
+						centerMode: true,
+						focusOnSelect: true
+					});
+					$gallery2.magnificPopup({
+						delegate: 'a',
+						type: 'image',
+						gallery: {
+							enabled: true
+						},
+					});
+					$gallery3.magnificPopup({
+						delegate: 'a',
+						type: 'image',
+						gallery: {
+							enabled: true
+						},
+					});
+				}
+			})
+		})();
+	})
+
+</script>
+</body>
+</html>

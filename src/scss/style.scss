@@ -1,0 +1,21 @@
+@import "../../vendor/bootstrap-4-dev/scss/functions";
+@import "../../vendor/bootstrap-4-dev/scss/variables";
+@import "../../vendor/bootstrap-4-dev/scss/mixins";
+@import "../../vendor/bootstrap-4-dev/scss/root";
+@import "../../vendor/bootstrap-4-dev/scss/buttons";
+@import "../../vendor/bootstrap-4-dev/scss/forms";
+@import "../../vendor/bootstrap-4-dev/scss/code";
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+@import "../../vendor/slick-master/slick/slick-theme.css";
+@import "../../vendor/slick-master/slick/slick.css";
+@import "../../vendor/Magnific-Popup-master/src/css/main.scss";
+
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
